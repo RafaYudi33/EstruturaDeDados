@@ -117,17 +117,30 @@ void imprimeLista(Lista *lista){
         printf("%d ", aux->elemento); 
         aux = aux->prox; 
     }
+    printf("\n");
+
+}
+
+void imprimeListaInversa(Lista *lista){
+    NodeDuplo *aux; 
+    aux = lista->ultElemento; 
+
+    while(aux != NULL ){
+        printf("%d ", aux->elemento); 
+        aux = aux->ant; 
+    }
+    printf("\n");
 
 }
 
 NodeDuplo getUltElem(Lista *lista){
-    printf("\nO ultimo elemento: %d\n", *lista->ultElemento); 
-    return *lista->primElemento; 
+    printf("\nO ultimo elemento: %d\n", lista->ultElemento->elemento); //ou assim: (*lista->ultElemento) 
+    return *lista->ultElemento; 
 }
 
 NodeDuplo getPrimElem(Lista *lista){
     printf("\nO primeiro elemento: %d\n", *lista->primElemento);
-    return *lista->ultElemento; 
+    return *lista->primElemento; 
 }
 
 int main(int argc, char const *argv[]){
@@ -142,10 +155,11 @@ int main(int argc, char const *argv[]){
     insereOrdenado(&li, 1); 
     insereOrdenado(&li, 0); 
     // getPrimElem(&li);
-    // getUltElem(&li); 
     insereOrdenado(&li, 10); 
     insereOrdenado(&li, 8); 
+    //getUltElem(&li); 
     imprimeLista(&li); 
+    imprimeListaInversa(&li); 
 
 
 }
