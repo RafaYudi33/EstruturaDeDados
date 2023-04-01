@@ -96,10 +96,12 @@ void insereOrdenado(Lista *lista, int novoElemento){
             novoNo->ant = lista->primElemento->ant;
             lista->primElemento->ant = novoNo; 
             lista->primElemento = novoNo;
-        }else{
-            printf("%d", *aux->ant); 
-            novoNo->ant = aux->ant; 
-            novoNo->prox = aux->prox; 
+        }else{// se for inserir no meio 
+            novoNo->ant = aux->ant; // arrumo o anterior do novoNo
+            novoNo->prox = aux;  // arrumo o prox do novo no
+            aux->ant->prox = novoNo; // arrumo o prox do anterior
+            aux->ant = novoNo; // arrumo o anterior do aux
+            // quando inserir no meio, sempre terei que arrumar 4 ponteiros 
         }
         
 
