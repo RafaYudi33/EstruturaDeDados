@@ -133,6 +133,35 @@ void imprimeListaInversa(Lista *lista){
 
 }
 
+void removeNo(Lista *lista, int elemento){
+
+    if(listaVAzia(lista)){
+        printf("A lista esta vazia, não ha elementos para remover"); 
+    }else{
+        NodeDuplo *aux = lista->primElemento; 
+
+        while( aux!=NULL && aux->elemento != elemento){
+            aux = aux->prox; 
+        }
+
+        if(aux == NULL){
+            printf("Elemento nao encontrado"); 
+        }else if(aux == lista->ultElemento){// vai remover da ultima posição 
+            lista->ultElemento = aux->ant;  
+            aux->ant->prox = aux->prox;     
+        }else if(aux == lista->primElemento){// vai remover da primeira posiçao 
+            lista->primElemento = aux->prox; 
+            aux->prox->ant = aux->ant; 
+        }else{// vai remover do meio 
+            aux->ant->prox = aux->prox; 
+            aux->prox->ant = aux->ant; 
+        }
+        free(aux);
+    }
+
+}
+
+
 NodeDuplo getUltElem(Lista *lista){
     printf("\nO ultimo elemento: %d\n", lista->ultElemento->elemento); //ou assim: (*lista->ultElemento) 
     return *lista->ultElemento; 
@@ -154,12 +183,13 @@ int main(int argc, char const *argv[]){
     // insereListaFim(&li, 12); 
     insereOrdenado(&li, 1); 
     insereOrdenado(&li, 0); 
-    // getPrimElem(&li);
     insereOrdenado(&li, 10); 
     insereOrdenado(&li, 8); 
     //getUltElem(&li); 
+    removeNo(&li, 8); 
+    //getPrimElem(&li);
     imprimeLista(&li); 
-    imprimeListaInversa(&li); 
+    //imprimeListaInversa(&li); 
 
 
 }
