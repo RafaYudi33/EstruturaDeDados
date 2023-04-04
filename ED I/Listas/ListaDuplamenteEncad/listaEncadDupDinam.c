@@ -63,10 +63,6 @@ void insereListaFim(Lista *lista, int novoElemento){
 
 }
 
-
-
-
-
 void insereOrdenado(Lista *lista, int novoElemento){
     NodeDuplo *novoNo = (NodeDuplo*) malloc(sizeof(NodeDuplo)); 
     novoNo->ant = NULL; 
@@ -85,7 +81,7 @@ void insereOrdenado(Lista *lista, int novoElemento){
             //printf("o prox: %d ", aux->prox); 
             aux = aux->prox; 
         }   
-        //printf("%d ", aux->elemento); 
+        //printf("\n%d ", aux); 
         if(aux == NULL){// se for inserir no fim
             novoNo->prox = lista->ultElemento->prox;
             lista->ultElemento->prox = novoNo;
@@ -185,8 +181,10 @@ int main(int argc, char const *argv[]){
     insereOrdenado(&li, 0); 
     insereOrdenado(&li, 10); 
     insereOrdenado(&li, 8); 
+    insereOrdenado(&li, 13); 
+    insereOrdenado(&li, 7); 
     //getUltElem(&li); 
-    removeNo(&li, 8); 
+    removeNo(&li, 13); 
     //getPrimElem(&li);
     imprimeLista(&li); 
     //imprimeListaInversa(&li); 
