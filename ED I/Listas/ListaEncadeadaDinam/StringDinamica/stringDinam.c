@@ -132,16 +132,6 @@ void removeCaractere(ListaString *str, int qtd){
     str->primElem = aux; 
 }
 
-// ListaString InverteString (ListaString *string){
-//     ListaString *aux = string->primElem;  
-//     ListaString *armazena;
-//     ListaString *aux2 = aux;  
-//     while(aux!=NULL){
-//         armazena = insereInicio(string, armazena); 
-//     }
-
-// }
-
 void insereSubstring(ListaString *str, ListaString *substring){
     ListaString aux;
     inicializaString(&aux); 
