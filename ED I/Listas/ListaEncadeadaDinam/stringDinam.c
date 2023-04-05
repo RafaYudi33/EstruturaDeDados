@@ -20,16 +20,19 @@ void inicializaString(ListaString *lista){
 
 void reinicializaString(ListaString *lista){
     Strdim *aux = lista->primElem; 
-    lista->primElem = NULL; 
+     
     //int cont = 0;   
     Strdim *ant = NULL; 
     
     while(aux != NULL){
         ant = aux; 
         aux = aux->prox;
-        free(ant); 
+        ant->prox = NULL; 
+        free(ant);  
     }
+    lista->primElem = NULL;
     lista->UltElem = NULL; 
+    //inicializaString(lista);
 }
 
 
@@ -97,6 +100,22 @@ void insereCaractere(ListaString *lista, char newChar){
 
 }
 
+char insereInicio(ListaString *lista, char newChar){
+    Strdim *newNode = (char*) malloc(sizeof(Strdim)); 
+    newNode->c = newChar; 
+    newNode->prox = NULL; 
+
+    if(lista->primElem == NULL){
+        lista->primElem = newNode; 
+        lista->UltElem = newNode; 
+    }else{
+        
+        newNode->prox = lista->primElem; 
+        lista->primElem = newNode; 
+        return newChar; 
+    }
+}
+
 void removeCaractere(ListaString *str, int qtd){
     Strdim *aux = str->primElem; 
     Strdim *ant = NULL;
@@ -113,19 +132,53 @@ void removeCaractere(ListaString *str, int qtd){
     str->primElem = aux; 
 }
 
+// ListaString InverteString (ListaString *string){
+//     ListaString *aux = string->primElem;  
+//     ListaString *armazena;
+//     ListaString *aux2 = aux;  
+//     while(aux!=NULL){
+//         armazena = insereInicio(string, armazena); 
+//     }
+
+// }
+
+void insereSubstring(ListaString *str, ListaString *substring){
+    ListaString aux;
+    inicializaString(&aux); 
+    copiaCaracteres(str, &aux);
+    reinicializaString(str); 
+ 
+     
+
+    Strdim *auxSubs = substring->primElem; 
+    while(auxSubs != NULL){
+        insereCaractere(str, auxSubs->c);
+        //printf("%c", auxSubs->c);
+        auxSubs = auxSubs->prox; 
+    }
+    
+    
+    Strdim *aux2 = aux.primElem;  
+    while (aux2!= NULL){
+        insereCaractere(str, aux2->c); 
+        aux2 = aux2->prox; 
+    }
+
+}
+
 int main(int argc, char const *argv[])
 {
     
-    ListaString str1, str2, str3; 
+    ListaString str1, str2, str3, substring, str4; 
     inicializaString(&str1); 
     insereCaractere(&str1, 'o'); 
     insereCaractere(&str1, 'l'); 
     insereCaractere(&str1, 'a');
-    imprimeString(&str1); 
+    // imprimeString(&str1); 
 
-    inicializaString(&str2); 
-    copiaCaracteres(&str1, &str2); 
-    imprimeString(&str2);
+    // inicializaString(&str2); 
+    // copiaCaracteres(&str1, &str2); 
+    // //imprimeString(&str2);
     
     // reinicializaString(&str1); 
     // insereCaractere(&str1, 'U'); 
@@ -133,9 +186,23 @@ int main(int argc, char const *argv[])
     // insereCaractere(&str1, 'U'); 
     // imprimeString(&str1); 
 
-    inicializaString(&str3);
-    ConcatenaStrings(&str1,&str2,&str3); 
-    removeCaractere(&str3, 1); 
-    imprimeString(&str3);
+    // inicializaString(&str3);
+    // ConcatenaStrings(&str1,&str2,&str3); 
+    // removeCaractere(&str3, 1); 
+    //imprimeString(&str3);
+
+    // insereCaractere(&str4, 'e'); 
+    // insereCaractere(&str4, 'u');
+    // InverteString(&str4); 
+    // imprimeString(&str4); 
+
+    inicializaString(&substring);
+    insereCaractere(&substring,'o'); 
+    insereCaractere(&substring,'i');
+    insereCaractere(&substring,'i');
+    //imprimeString(&substring); 
+    insereSubstring(&str1,&substring);
+    imprimeString(&str1); 
+
 
 }
