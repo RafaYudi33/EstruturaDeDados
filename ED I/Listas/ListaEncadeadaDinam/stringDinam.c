@@ -170,7 +170,7 @@ void insereSubstring(ListaString *str, ListaString *substring){
 }
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-bool verificaSeMenor(ListaString *str1, ListaString *str2){
+bool comparaTamanho(ListaString *str1, ListaString *str2){
     int contStr1 = 0; 
     int contStr2 = 0;
     Strdim *auxStr1 = str1->primElem; 
@@ -187,20 +187,36 @@ bool verificaSeMenor(ListaString *str1, ListaString *str2){
     }
 
     if(contStr1<contStr2){
-        printf("\nA Primeira String e menor que a Segunda String!");
-        return true; 
+        //printf("\nA Primeira String e MENOR que a Segunda String!");
+        return false; 
     }else if(contStr1>contStr2){
-        printf("\nA Primeira String NAO e menor que a Segunda String");
+        //printf("\nA Primeira String e MAIOR que a Segunda String");
         return false; 
     }else{
-        printf("\nAs Strings possuem o MESMO tamanho"); 
-        return false;
+        //printf("\nAs Strings possuem o MESMO tamanho"); 
+        return true;
     }
 
 }
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-bool verificaSeIgual(ListaString *str1, ListaString *str2){
+bool verificaStringsIguais(ListaString *str1, ListaString *str2){
+    if(comparaTamanho(str1, str2)){
+        Strdim *auxStr1 = str1->primElem;
+        Strdim *auxStr2 = str2->primElem; 
+        while((auxStr1 != NULL)&&(auxStr1->c == auxStr2->c)){            
+            auxStr1 = auxStr1->prox; 
+            auxStr2 = auxStr2->prox;
+        }
+
+        if(auxStr1 == NULL){
+            printf("As strings sao iguais"); 
+        }else{
+            printf("As strings sao diferentes"); 
+        }
+    }else{
+        printf("As strings possuem tamanhos diferentes, portanto são diferentes"); 
+    }
 
 }
 
@@ -212,8 +228,8 @@ int main(int argc, char const *argv[])
     ListaString str1, str2, str3, substring, str4; 
     inicializaString(&str1); 
     insereCaractere(&str1, 'o'); 
-    insereCaractere(&str1, 'l'); 
-    insereCaractere(&str1, 'a');
+    insereCaractere(&str1, 'i'); 
+    insereCaractere(&str1, 'i');
     // insereCaractere(&str1, 'a');
     // imprimeString(&str1); 
 
@@ -245,7 +261,8 @@ int main(int argc, char const *argv[])
     //insereSubstring(&str1,&substring);
     //imprimeString(&str1); 
 
-    verificaSeMenor(&str1, &substring); 
+    //verificaSeMenor(&str1, &substring);
+    verificaStringsIguais(&str1, &substring); 
 
 
 }
