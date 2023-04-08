@@ -25,7 +25,7 @@ bool verificaVazia(Pilha *pilha){
     }
 }
 
-bool pilhaCheia
+//bool pilhaCheia
 
 void push (Pilha *pilha, int elemento){
     pilha->vPilha[pilha->topo] = elemento; 
