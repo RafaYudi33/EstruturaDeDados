@@ -14,32 +14,47 @@ typedef struct Pilha Pilha;
 
 void inicializaLista(Pilha *pilha){
     pilha->topo = 0; 
-    pilha->tam = 0;
-
 }
 
 bool verificaVazia(Pilha *pilha){
-    if(pilha->tam == 0){
-        printf("A pilha esta vazia");
+    if(pilha->topo == 0){
+        //printf("A pilha esta vazia");
         return true;
+    }else{
+        //printf("A pilha nao esta vazia"); 
+        return false; 
     }
 }
 
-//bool pilhaCheia
+bool pilhaCheia(Pilha *pilha){
+    if(pilha->topo == MAX){
+       // printf("\nA pilha esta cheia"); 
+        return true; 
+    }else{
+        //printf("\nA pilha nao esta cheia"); 
+        return false; 
+    }
+}
 
 void push (Pilha *pilha, int elemento){
-    pilha->vPilha[pilha->topo] = elemento; 
-    pilha->topo++; 
-}
-
-void imprimePilha(Pilha *pilha){
-    int aux = pilha->topo; 
-    
-    while(aux != MAX+1){
-        printf("%d ", pilha->vPilha[aux]);
-        aux++;  
+    if(pilhaCheia(pilha)){
+        printf("A pilha esta cheia, nao e possivel realizar a insercao"); 
+    }else{
+        pilha->vPilha[pilha->topo] = elemento; 
+        pilha->topo++; 
     }
 
+}
+
+void pop(Pilha *pilha){
+    pilha->vPilha[pilha->topo-1] = NULL;  
+    pilha->topo--; 
+}
+
+void imprimePilha(Pilha *pilha){ 
+    for(int aux = pilha->topo; aux != 0; aux--){
+        printf("%d ", pilha->vPilha[aux-1]);  
+    }
 }
 
 
@@ -49,7 +64,15 @@ int main(int argc, char const *argv[]){
 
 
     Pilha pilha; 
-    inicializaLista(&pilha); 
-    verificaVazia(&pilha); 
+    inicializaLista(&pilha);
+    push(&pilha, 3);  
+    push(&pilha, 4);  
+    push(&pilha, 6);
+    push(&pilha, 8);
+    push(&pilha, 2);
+    pop(&pilha); 
+    imprimePilha(&pilha);   
+    //pilhaCheia(&pilha); 
+   // verificaVazia(&pilha); 
 
 }
