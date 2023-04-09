@@ -47,8 +47,12 @@ void push (Pilha *pilha, int elemento){
 }
 
 void pop(Pilha *pilha){
-    pilha->vPilha[pilha->topo-1] = NULL;  
-    pilha->topo--; 
+    if(verificaVazia(pilha)){
+        printf("A pilha esta vazia, nao e possivel remover");
+    }else{
+        pilha->vPilha[pilha->topo-1] = NULL;  
+        pilha->topo--; 
+    }
 }
 
 void imprimePilha(Pilha *pilha){ 
@@ -57,6 +61,9 @@ void imprimePilha(Pilha *pilha){
     }
 }
 
+void retornaTopo(Pilha *pilha){
+    printf("\nO elemento do topo: %d \n", pilha->vPilha[pilha->topo-1]); 
+}
 
 
 
@@ -71,7 +78,9 @@ int main(int argc, char const *argv[]){
     push(&pilha, 8);
     push(&pilha, 2);
     pop(&pilha); 
-    imprimePilha(&pilha);   
+    pop(&pilha);
+    imprimePilha(&pilha); 
+    retornaTopo(&pilha);   
     //pilhaCheia(&pilha); 
    // verificaVazia(&pilha); 
 
