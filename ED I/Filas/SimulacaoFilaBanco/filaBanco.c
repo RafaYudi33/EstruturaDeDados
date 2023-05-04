@@ -11,7 +11,6 @@ struct nodeFila{
 struct filaDinamica{
     struct nodeFila *inicio; 
     struct nodeFila *fim; 
-    int *tempoEspera;
 };
 typedef struct nodeFila nodeFila; 
 typedef struct filaDinamica Fila; 
@@ -107,7 +106,7 @@ int main(int argc, char const *argv[])
                 if(!vazia(&Caixas[0])){ 
                     removeFila(&Caixas[0]);
                     numCliAtendidos[0] = numCliAtendidos[0] + 1;
-                    atendimentoCaixa[0] = rand() % 15;
+                    atendimentoCaixa[0] = rand() % 15; 
                     //printf("\n%d\n", atendimentoCaixa[0]); 
                     tempoEspera[0] = tempoEspera[0] + atendimentoCaixa[0]; 
                 }
