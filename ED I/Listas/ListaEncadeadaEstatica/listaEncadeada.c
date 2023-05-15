@@ -28,6 +28,7 @@ void InicializaLista(Lista* lista){
         lista->Registro[i].elemento = NULL; 
     }
 
+    lista->Registro[i].elemento = NULL; 
     lista->Registro[i].prox = -1; 
 }
 

@@ -70,8 +70,17 @@ void imprimir(Fila *fila){
         while(aux != NULL){
             printf("%d ", aux->elemento); 
             aux = aux->prox; 
-            // printf("o prox e: %d ", aux); 
         }
+    }
+}
+
+void remover(Fila *fila){
+    if(vazia(fila)){
+        printf("A fila esta vazia, nao ha elementos para remover"); 
+    }else{
+        nodeFila *aux = fila->inicio; 
+        fila->inicio = fila->inicio->prox; 
+        free(aux);  
     }
 }
 
@@ -84,7 +93,7 @@ int main(int argc, char const *argv[])
     inserir(&fila, 30, 13);
     inserir(&fila, 25, 12);
     inserir(&fila, 10, 7);
-     
+    remover(&fila); 
 
     imprimir(&fila); 
 }

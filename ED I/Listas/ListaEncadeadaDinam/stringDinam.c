@@ -201,7 +201,7 @@ bool comparaTamanho(ListaString *str1, ListaString *str2){
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 bool verificaStringsIguais(ListaString *str1, ListaString *str2){
-    if(comparaTamanho(str1, str2)){
+    //if(comparaTamanho(str1, str2)){
         Strdim *auxStr1 = str1->primElem;
         Strdim *auxStr2 = str2->primElem; 
         while((auxStr1 != NULL)&&(auxStr1->c == auxStr2->c)){            
@@ -209,14 +209,14 @@ bool verificaStringsIguais(ListaString *str1, ListaString *str2){
             auxStr2 = auxStr2->prox;
         }
 
-        if(auxStr1 == NULL){
+        if(auxStr1 == NULL && auxStr2 == NULL){
             printf("As strings sao iguais"); 
         }else{
             printf("As strings sao diferentes"); 
         }
-    }else{
-        printf("As strings possuem tamanhos diferentes, portanto são diferentes"); 
-    }
+    // }else{
+    //     printf("As strings possuem tamanhos diferentes, portanto são diferentes"); 
+    // }
 
 }
 
@@ -229,7 +229,8 @@ int main(int argc, char const *argv[])
     inicializaString(&str1); 
     insereCaractere(&str1, 'o'); 
     insereCaractere(&str1, 'i'); 
-    insereCaractere(&str1, 'i');
+    
+    
     // insereCaractere(&str1, 'a');
     // imprimeString(&str1); 
 

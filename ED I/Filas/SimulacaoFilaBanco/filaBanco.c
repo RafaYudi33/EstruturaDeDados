@@ -87,7 +87,8 @@ int main(int argc, char const *argv[])
     int numCliAtendidos[] = {0,0,0,0};
     int tempoEspera[] = {0,0,0,0}; 
     int tempoSemCliente = 0; 
-
+    time_t t;
+    srand((unsigned) time(&t));
 
     inicializaFila(&Caixas[0]); 
     inicializaFila(&Caixas[1]); 
