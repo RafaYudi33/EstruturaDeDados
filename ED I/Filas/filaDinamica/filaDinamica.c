@@ -30,6 +30,20 @@ bool vazia(Fila *fila){
     }
 }
 
+void inserirInicio(Fila *fila, int novoElemento){
+    nodeFila *novoNo; 
+    novoNo = (nodeFila*) malloc(sizeof(nodeFila)); 
+    novoNo->elemento = novoElemento; 
+
+    if(vazia(fila)){
+        fila->inicio = novoNo; 
+        fila->fim = novoNo;
+    }else{
+        novoNo->prox = fila->inicio; 
+        fila->inicio = novoNo; 
+    }
+}
+
 
 void inserir(Fila *fila, int novoElemento){
     
@@ -72,7 +86,7 @@ void imprimeFila(Fila *fila){
 }
 
 void obterInicio(Fila *fila){
-    printf("\nO inicio da fila: %d", fila->inicio->elemento); 
+   return fila->inicio->elemento; 
 }
 
 
@@ -87,6 +101,7 @@ int main(int argc, char const *argv[]){
     inserir(&fila, 8); 
     inserir(&fila, 20); 
     inserir(&fila, 25);
+    inserirInicio(&fila, 10); 
     //removeFila(&fila);
     //removeFila(&fila); 
     imprimeFila(&fila);  

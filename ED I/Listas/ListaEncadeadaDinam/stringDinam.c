@@ -88,27 +88,27 @@ int tamanhoString(ListaString *lista){
 }
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-void insereCaractere(ListaString *lista, char newChar){
-    Strdim *newNode = (char*) malloc(sizeof(Strdim)); 
-    newNode->c = newChar; 
-    newNode->prox = NULL; 
+    void insereCaractere(ListaString *lista, char newChar){
+        Strdim *newNode = (char*) malloc(sizeof(Strdim)); 
+        newNode->c = newChar; 
+        newNode->prox = NULL; 
 
-    if(lista->primElem == NULL){
-        lista->primElem = newNode; 
-        lista->UltElem = newNode; 
-    }else{
-        Strdim *aux = lista->primElem; 
-        Strdim *anterior = NULL; 
+        if(lista->primElem == NULL){
+            lista->primElem = newNode; 
+            lista->UltElem = newNode; 
+        }else{
+            Strdim *aux = lista->primElem; 
+            Strdim *anterior = NULL; 
 
-        while(aux != NULL){
-            anterior = aux; 
-            aux = aux->prox; 
+            while(aux != NULL){
+                anterior = aux; 
+                aux = aux->prox; 
+            }
+            anterior->prox = newNode; 
+            lista->UltElem = newNode; 
         }
-        anterior->prox = newNode; 
-        lista->UltElem = newNode; 
-    }
 
-}
+    }
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 char insereInicio(ListaString *lista, char newChar){
@@ -201,7 +201,6 @@ bool comparaTamanho(ListaString *str1, ListaString *str2){
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 bool verificaStringsIguais(ListaString *str1, ListaString *str2){
-    //if(comparaTamanho(str1, str2)){
         Strdim *auxStr1 = str1->primElem;
         Strdim *auxStr2 = str2->primElem; 
         while((auxStr1 != NULL)&&(auxStr1->c == auxStr2->c)){            
@@ -214,10 +213,6 @@ bool verificaStringsIguais(ListaString *str1, ListaString *str2){
         }else{
             printf("As strings sao diferentes"); 
         }
-    // }else{
-    //     printf("As strings possuem tamanhos diferentes, portanto são diferentes"); 
-    // }
-
 }
 
 
