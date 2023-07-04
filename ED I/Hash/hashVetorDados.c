@@ -1,8 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#include <conio.h>
-#define MAX 67
+#define MAX 7
 
 struct tpdados
 {
@@ -57,9 +56,9 @@ void busca(tpdados *tabhash, int matricula){
 void imprimeTab(tpdados *tabHash){
    for(int i = 0; i < MAX; i++){
       if(tabHash[i].matricula != -1){
-         printf("Matricula %d", tabHash[i].matricula);
-         printf("Matricula %d", tabHash[i].matricula);
-         printf("Matricula %d", tabHash[i].matricula);
+         printf("\nMatricula: %d", tabHash[i].matricula);
+         printf("\nNome: %s", tabHash[i].nome);
+         printf("\nEmail: %s", tabHash[i].email);
          printf("\n"); 
       }
    }
@@ -73,12 +72,26 @@ int main(int argc, char const *argv[])
    inicializaTabHash(&tabHash); 
 
    tpdados reg1; 
-   reg1.matricula = 123441; 
+   reg1.matricula = 210; 
    strcpy(reg1.nome, "Eu"); 
    strcpy(reg1.email, "euEmail");
 
+   tpdados reg2; 
+   reg2.matricula = 70; 
+   strcpy(reg2.nome, "Rafael"); 
+   strcpy(reg2.email, "RafaelEmail");
+
+   tpdados reg3; 
+   reg3.matricula = 700; 
+   strcpy(reg3.nome, "Gabriel"); 
+   strcpy(reg3.email, "GabrielEmail");
+
+
    inserir(&tabHash, reg1); 
-   busca(&tabHash, 123441);  
+   inserir(&tabHash, reg2); 
+   inserir(&tabHash, reg3); 
+   //busca(&tabHash, 123441);  
+   imprimeTab(&tabHash); 
     
 }
 
