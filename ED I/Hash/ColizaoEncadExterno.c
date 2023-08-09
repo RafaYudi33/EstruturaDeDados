@@ -53,6 +53,7 @@ void remover(reg *tabhash[], reg registro){
         }
 
 
+
     }else{// se for remover um elemento de colisao 
         reg *ant = NULL; 
         while(aux != NULL && aux->chave != registro.chave){
